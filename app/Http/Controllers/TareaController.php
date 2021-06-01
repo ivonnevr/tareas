@@ -1,20 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-//use Illuminate\Support\Facades\DB; ---> este es para usar DB::table
+
 use App\Models\Tarea;
-
 use Illuminate\Http\Request;
-
-/** CRUD
-     * Listado -> index
-     * Form creación -> create
-     * Guardar a DB -> store
-     * ver detalle -> show
-     * Form editar -> edit
-     * Guardar cambios a DB -> update
-     * Eliminar -> delete
-     */
 
 class TareaController extends Controller
 {
@@ -25,10 +14,7 @@ class TareaController extends Controller
      */
     public function index()
     {
-        //Con DB::table se le menciona en qué tabla estamos trabajando
-        //$tareas = DB::table('tareas')->get(); //Equivalente a SELECT * FROM tareas pero mediante QueryBuilder;
-        //dd($tareas);                        //Se usa el get() para traer la información de la tabla
-        $tareas = Tarea::all();
+        $tareas = Tarea::get();
         return view('tareas/tareaIndex', compact('tareas'));
     }
 
@@ -56,10 +42,10 @@ class TareaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Tarea  $tarea
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Tarea $tarea)
     {
         //
     }
@@ -67,10 +53,10 @@ class TareaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Tarea  $tarea
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tarea $tarea)
     {
         //
     }
@@ -79,10 +65,10 @@ class TareaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Tarea  $tarea
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Tarea $tarea)
     {
         //
     }
@@ -90,10 +76,10 @@ class TareaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Tarea  $tarea
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tarea $tarea)
     {
         //
     }
