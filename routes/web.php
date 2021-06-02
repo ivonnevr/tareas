@@ -18,7 +18,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('tarea', [TareaController::class, 'index']);
+//Se pueden tener mismas rutas siempre y cuando los métodos sean diferentes (get o post)
+/*Route::get('tarea', [TareaController::class, 'index']);
+Route::get('tarea/create', [TareaController::class, 'create']);
+Route::post('tarea', [TareaController::class, 'store']);
+*/
+
+//con Route::resource se crean automáticamente las rutas sin necesidad de estarlas creando una por una
+//Para listarlas ejecutamos el comando "php artisan route:list | grep tarea" en la terminal
+Route::resource('tarea', TareaController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
